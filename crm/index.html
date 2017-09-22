@@ -110,48 +110,25 @@
 		/*上拉加载样式*/
 	.pull_drawing {
 		position: absolute;
-		top: -58px;
+		top: -1.1rem;
 		width: 100%;
-		padding-top: 22px;
-		background-size: 172px 22px;
-		height: 35px;
-		line-height: 35px;
+		padding-top: .22rem;
+		background-size: 1.72rem .22rem;
+		height: 1rem;
+		line-height: 1rem;
 		text-align: center;
 	}
 
 	.loading_icon {
 		position: absolute;
-		margin-left: -25px;
-		margin-top: 8px;
-		width: 14px;
-		height: 14px;
-		border: 2px solid #54a5d4;
-		border-radius: 50%;
-		-webkit-animation: roll 1s linear infinite;
-		animation: roll 1s linear infinite;
-		clip: rect(0,15px,18px,0);
-		line-height: 35px;
+		margin-left: -.25rem;
+		margin-top: .08rem;
+		width: .75rem;
+		height: .75rem;
+		background: url("load.gif") center no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
 		text-align: center;
-	}
-
-	@-webkit-keyframes roll {
-		0% {
-			-webkit-transform: rotate(0deg);
-		}
-
-		100% {
-			-webkit-transform: rotate(360deg);
-		}
-	}
-
-	@keyframes roll {
-		0% {
-			transform: rotate(0deg);
-		}
-
-		100% {
-			transform: rotate(360deg);
-		}
 	}
 </style>
 
@@ -230,11 +207,12 @@
 <script type="text/javascript">
 	$('#crm_list').refresh({
 		pullFunction:function(ms,callback){
-			setTimeout(function(){
-				console.log(1)
-				callback();
+				/*调接口*/
 
-			},ms)
+			setTimeout(function(){
+				callback(); //回调成功的时候走
+			},1000000);
+
 		}
 	})
 </script>

@@ -16,7 +16,7 @@ $.fn.extend({
         /*
          var _pulldownConfig = { normalStatus: "涓嬫媺鍗冲彲鍒锋柊", maxStatus: "鏉惧紑绔嬪嵆鍒锋柊", releaseStatus: "姝ｅ湪鍔犺浇鈥�" };
          */
-        var _pulldownConfig = { normalStatus: "下拉即可刷新", maxStatus: "松开立即刷新", releaseStatus: "正在加载..." };
+        var _pulldownConfig = { normalStatus: "", maxStatus: "", releaseStatus: "" };
 
         var _start = 0,_end = 0;
         var _TransitionObj = {
@@ -88,7 +88,7 @@ $.fn.extend({
 
                 settings.loading_text.html(_pulldownConfig.releaseStatus);
                 _TransitionObj.translate(40);
-                settings.pullFunction(1000,function(){ _TransitionObj.translate(0)})
+                settings.pullFunction(1500,function(){ _TransitionObj.translate(0)})
             } else {
                 _TransitionObj.goDefault();
             }
