@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
-
     <title>jquery-puull-refresh</title>
     <script src="jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="pullRefresh.js" type="text/javascript" charset="utf-8"></script>
+    <script src="fullRefresh.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
         body {
             font-family: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
@@ -14,8 +13,8 @@
         }
 
         body, div, p,ul {
-            padding: 0px;
-            margin: 0px;
+            padding: 0;
+            margin: 0;
         }
 
         .pull_drawing {
@@ -94,11 +93,13 @@
 <div class="nav">
     我是导航栏
 </div>
+
+<p class="pull_drawing">
+    <i class="loading_icon"></i>
+    <span class="loading_text">abc</span>
+</p>
 <div id="main" class="main">
-    <p class="pull_drawing">
-        <i class="loading_icon"></i>
-        <span class="loading_text">abc</span>
-    </p>
+
     <div class="textbg">
         <ul id="data-list">
             <li>列表item</li>
@@ -118,7 +119,7 @@
                 callback();
 
             },ms)
-        },
+        }
     })
 </script>
 </body>

@@ -1,0 +1,243 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="wap-font-scale" content="no">
+<title>HTML5进度条</title>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+	</script>
+	<style>
+	body{font-size: .12rem;}
+	*{padding:0;margin:0;}
+	ul,li{list-style: none;}
+	/*list*/
+	.fl{
+		float: left;
+	}
+	.fr{
+		float: right;
+	}
+	.clearfix:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	.crm_listItems{
+		padding: .36rem .4rem .4rem .48rem;
+		color: #FF5555;
+	}
+	.crm_title{
+		line-height: .36rem;
+		color: inherit;
+	}
+	.crm_listItems .account{
+		color:inherit;
+		font-size: .3rem;
+		font-weight: bold;
+	}
+	.crm_listItems .account:before{
+		display: inline-block;
+		content: '';
+		margin-right: .14rem;
+		width: .18rem;
+		height: .18rem;
+		background: #FF5555;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		vertical-align: .03rem;
+	}
+	.crm_listItems .crm_more{
+		font-size: .24rem;
+		color: #adadad;
+	}
+	.crm_listItems .crm_more:after{
+		display: inline-block;
+		content: '';
+		margin-left: .06rem;
+		width: .12rem;
+		height: .2rem;
+		background: url(images/crm-arrow.png)no-repeat right top;
+		background-size: cover;
+	}
+	.crm_listItems .crm_listItem{
+		margin-left: .08rem;
+		padding-top: .25rem;
+		padding-left: .22rem;
+		border-left:1px solid #fedede;
+		color: inherit;
+	}
+	.listLi_first{
+		height: .46rem;
+		line-height: .46rem;
+		font-size: .32rem;
+		color: inherit;
+	}
+	.listLI_second{
+		display: block;
+		line-height: .4rem;
+		height: .4rem;
+		font-size: .24rem;
+		color: #4A4A4A;
+	}
+	.crm_listItems .listLi{
+		color: inherit;
+	}
+	.crm_listItems .listLi:not(:first-child){
+		margin-top: .21rem;
+	}
+	/*修改不同颜色需要更改的样式*/
+	.crm_listItems:nth-of-type(2){
+		color: #23aaff;
+	}
+	.crm_listItems:nth-of-type(2) .account:before{
+		background:#23aaff;
+	}
+	.crm_listItems:nth-of-type(2) .crm_listItem{
+		border-left: 1px solid #23aaff;
+	}
+	.crm_listItems:nth-of-type(3){
+		color: #5bd0a8;
+	}
+	.crm_listItems:nth-of-type(3) .account:before{
+		background:#5bd0a8;
+	}
+	.crm_listItems:nth-of-type(3) .crm_listItem{
+		border-left: 1px solid #5bd0a8;
+	}
+
+		/*上拉加载样式*/
+	.pull_drawing {
+		position: absolute;
+		top: -58px;
+		width: 100%;
+		padding-top: 22px;
+		background-size: 172px 22px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+	}
+
+	.loading_icon {
+		position: absolute;
+		margin-left: -25px;
+		margin-top: 8px;
+		width: 14px;
+		height: 14px;
+		border: 2px solid #54a5d4;
+		border-radius: 50%;
+		-webkit-animation: roll 1s linear infinite;
+		animation: roll 1s linear infinite;
+		clip: rect(0,15px,18px,0);
+		line-height: 35px;
+		text-align: center;
+	}
+
+	@-webkit-keyframes roll {
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+
+	@keyframes roll {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>
+
+</head>
+<body>
+
+
+	<div class="crm_list" id="crm_list">
+		<p class="pull_drawing">
+			<i class="loading_icon"></i>
+			<span class="loading_text">abc</span>
+		</p>
+		<div class="crm_listItems">
+			<div class="crm_title clearfix">
+				<span class="account fl">重点客户</span>
+				<span class="crm_more fr">MORE</span>
+			</div>
+			<ul class="crm_listItem">
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+			</ul>
+		</div>
+		<div class="crm_listItems">
+			<div class="crm_title clearfix">
+				<span class="account fl">重点客户</span>
+				<span class="crm_more fr">MORE</span>
+			</div>
+			<ul class="crm_listItem">
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+			</ul>
+		</div>
+		<div class="crm_listItems">
+			<div class="crm_title clearfix">
+				<span class="account fl">重点客户</span>
+				<span class="crm_more fr">MORE</span>
+			</div>
+			<ul class="crm_listItem">
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+				<li class="listLi">
+					<span class="listLi_first">北京京东世纪贸易有限公司</span>
+					<span class="listLI_second">新增意向，意向金额1000万，成功率90%</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+<script src="../jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../fullRefresh.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('#crm_list').refresh({
+		pullFunction:function(ms,callback){
+			setTimeout(function(){
+				console.log(1)
+				callback();
+
+			},ms)
+		}
+	})
+</script>
+</body>
+</html>
+

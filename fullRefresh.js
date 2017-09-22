@@ -2,19 +2,22 @@ $.fn.extend({
     refresh: function(option) {
         var el = $(this);
         var defaults = {
-            height:60,//ÉèÖÃ´¥·¢ÏÂÀ­Ë¢ĞÂµÄ¾àÀë£»
-            loading_text:$('.loading_text'),//ÉèÖÃÎÄ×ÖÈİÆ÷£»
-            loading_icon:$('.loading_icon'),//ÉèÖÃ¼ÓÔØiconµÄÈİÆ÷£»
-            coefficient:0.6,//×èÄáÏµÊı£»×¢£¬×èÄáÏµÊıÔ½Ğ¡£¬Ô½ÄÑ´¥·¢¡£
-            pullFunction:function(){},//ÏÂÀ­Ë¢ĞÂÇëÇóÊı¾İº¯Êı£»
+            height:60,
+            loading_text:$('.loading_text'),
+            loading_icon:$('.loading_icon'),
+            coefficient:0.6,
+            pullFunction:function(){},
         }
         var settings = $.extend(defaults, option || {}); //init
-        console.log(settings)
         var _hasPhone = navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i);
         var height=settings.height;
         var className="loading_icon";
         var _hasTouch = 'ontouchstart' in window;
-        var _pulldownConfig = { normalStatus: "ÏÂÀ­¼´¿ÉË¢ĞÂ", maxStatus: "ËÉ¿ªÁ¢¼´Ë¢ĞÂ", releaseStatus: "ÕıÔÚ¼ÓÔØ¡­" };
+        /*
+         var _pulldownConfig = { normalStatus: "æ¶“å¬«åªºé—å†²å½²é’é”‹æŸŠ", maxStatus: "é‰æƒ§ç´‘ç»”å¬ªåµ†é’é”‹æŸŠ", releaseStatus: "å§ï½…æ¹ªé”çŠºæµ‡éˆ¥ï¿½" };
+         */
+        var _pulldownConfig = { normalStatus: "ä¸‹æ‹‰å³å¯åˆ·æ–°", maxStatus: "æ¾å¼€ç«‹å³åˆ·æ–°", releaseStatus: "æ­£åœ¨åŠ è½½..." };
+
         var _start = 0,_end = 0;
         var _TransitionObj = {
             translate: function (height) {
@@ -28,7 +31,7 @@ $.fn.extend({
                 _TransitionObj.translate(0);
             }
         };
-        var flag=true
+        var flag=true;
         var _bindTouchEvents = function () {
             if(_hasPhone){
                 el.bind("touchstart", _touchstartHandler);
@@ -45,11 +48,8 @@ $.fn.extend({
             flag=false;
             settings.loading_icon.removeClass(className);
             var even = typeof event == "undefined" ? e : event;
-            //±£´æµ±Ç°Êó±êY×ø±ê
             _start = _hasTouch ? even.touches[0].pageY : even.pageY;
             if (el.scrollTop() > 0) {
-                console.log(el.scrollTop());
-                //Ïû³ı»¬¿é¶¯»­Ê±¼ä
                 _TransitionObj.translitionTime(0);
             }
         };
@@ -58,10 +58,9 @@ $.fn.extend({
             if($(document).scrollTop()>=10||flag){
                 return
             }
-            changeHeight=_end - _start;
             var even = typeof event == "undefined" ? e : event;
-            //±£´æµ±Ç°Êó±êY×ø±ê
             _end = _hasTouch ? even.touches[0].pageY : even.pageY;
+            changeHeight=_end - _start;
             if (changeHeight<0||changeHeight>200){
                 return
             }
@@ -71,7 +70,6 @@ $.fn.extend({
                 settings.loading_text.html(_pulldownConfig.normalStatus);
             }
             even.preventDefault();
-            //Ïû³ı»¬¿é¶¯»­Ê±¼ä
             _TransitionObj.translitionTime(0);
             _TransitionObj.translate(changeHeight*settings.coefficient);
         };
@@ -83,22 +81,15 @@ $.fn.extend({
             if($(document).scrollTop()>0){
                 return
             }
-            //ÅĞ¶Ï»¬¶¯¾àÀëÊÇ·ñ´óÓÚµÈÓÚÖ¸¶¨Öµ
             if (changeHeight*settings.coefficient>= height) {
+                changeHeight = 0;
                 settings.loading_icon.addClass(className);
-                //ÉèÖÃ»¬¿é»Øµ¯Ê±¼ä
                 _TransitionObj.translitionTime(1);
 
-                //ÉèÖÃË¢ĞÂÊ±µÄÎÄ×Ö
                 settings.loading_text.html(_pulldownConfig.releaseStatus);
-                //±£ÁôÌáÊ¾²¿·Ö
                 _TransitionObj.translate(40);
-                //Ö´ĞĞ»Øµ÷º¯Êı
-                settings.pullFunction(3000,function(){ _TransitionObj.translate(0)})
-
-
+                settings.pullFunction(1000,function(){ _TransitionObj.translate(0)})
             } else {
-                //·µ»Ø³õÊ¼×´Ì¬
                 _TransitionObj.goDefault();
             }
         }
