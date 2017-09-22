@@ -104,11 +104,7 @@
             <li>列表item</li>
             <li>列表item</li>
             <li>列表item</li>
-            <li>列表item</li>
-            <li>列表item</li>
-            <li>列表item</li>
-            <li>列表item</li>
-            <li>列表item</li>
+
         </ul>
     </div>
 </div>
@@ -116,7 +112,7 @@
     $('#main').refresh({
         pullFunction:function(ms,callback){
             setTimeout(function(){
-                for(var i=0;i<5;i++){
+                for(var i=0;i<1;i++){
                     $('#data-list').append('<li>我是新增的item</li>')
                 }
                 callback();
